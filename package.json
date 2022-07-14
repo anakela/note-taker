@@ -1,7 +1,7 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Table of Contents",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
-  }
+    "express": "^4.18.1",
+    "jest": "^28.1.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anakela/note-taker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/anakela/note-taker/issues"
+  },
+  "homepage": "https://github.com/anakela/note-taker#readme"
 }
