@@ -1,7 +1,7 @@
-// const express = require('express');
-// const fs = require('fs');
+const express = require('express');
+const fs = require('fs');
 
-// const app = express();
+const app = express();
 
 let noteTitle;
 let noteText;
