@@ -52,20 +52,13 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./public/assets/images/anakela-note-taker-heroku.png)
+![](./public/assets/images/anakela-note-taker-notes-heroku.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- GitHub Repository: [https://github.com/anakela/note-taker](https://github.com/anakela/note-taker)
+- Live Site URL: [https://anakela-note-taker.herokuapp.com/](https://anakela-note-taker.herokuapp.com/)
 
 ## My Process
 
@@ -73,51 +66,59 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 - Semantic HTML5 markup
 - CSS
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- JavaScript
+- Node.js
+- Express.js
 
 ### What I Learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This challenge was my first opportunity to combine `Node.js` and frontend development together.  It was also provided a chance to explore how to use Express.js and routes.
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-If you want more help with writing markdown, check out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+I learned several things while working on this assignment.  
 
 ### Continued Development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+In the future, I would like to update this app so that notes can be edited.  I would most likely do this by adding code similar to the following:
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+```JavaScript
+router.patch('/notes/:id', (req, res) => {
+    console.log(req.params.id);
+    readFile('./db/db.json', 'utf-8')
+        .then((response) => {
+            let data = JSON.parse(response);
+            const filteredNotes = data.filter(note => note.id !== req.params.id);
+            console.log(filteredNotes);
+
+            writeFile('./db/db.json', JSON.stringify(filteredNotes))
+                .then((result) => {
+                    console.log(result);
+                    res.json(filteredNotes);
+                });
+        });
+});
+```
+
+I would then need to add icons to each note that users could click in order to edit them individually, as well as a save icon when each note is displayed and updated.
 
 ### Useful Resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Code Grepper: “how to add .ds_store to gitignore” Code Answer’s](https://www.codegrepper.com/code-examples/whatever/how+to+add+.ds_store+to+gitignore)
+- [Heroku Dev Center: Deploying Node.js Apps on Heroku](https://devcenter.heroku.com/articles/deploying-nodejs)
+- [MDN Web Docs: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+- [NPM: uuid](https://www.npmjs.com/package/uuid)
+- [Postman](https://web.postman.co/workspace/My-Workspace~b001dcd3-ee8f-4a22-8b58-6a2474c2cdc3/request/create?requestId=1694d1ed-d0f6-41b2-80fd-5003e5476f5c)
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- GitHub - [https://github.com/anakela](https://github.com/anakela)
+- LinkedIn - [https://www.linkedin.com/in/anakela/](https://www.linkedin.com/in/anakela/)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Fellow Bootcampers
+  - Ivy Chang
+  - Nolan Spence
+- TAs
+  - Scott Nelson
+  - Luigi Campbell
+  - Matthew Kaus
