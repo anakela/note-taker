@@ -1,4 +1,4 @@
-const router = require('./routes/apiRoutes');
+const routes = require('./routes');
 const express = require('express');
 const path = require('path');
 
@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-app.use('/api', router);
+app.use(routes);
 
 // api/notes
 // GET all notes
@@ -24,12 +24,6 @@ app.get('/', (req, res) => {
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/notes.html'))
 });
-
-// api/notes
-// POST single note
-
-// api/notes/:id
-// DELETE
 
 app.listen(PORT, () => {
     console.log(`App is listening at http://localhost:${PORT}.`);
