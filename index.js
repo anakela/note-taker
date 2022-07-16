@@ -16,6 +16,7 @@ app.use('/api', router);
 
 // api/notes
 // GET all notes
+// These are view routes.  Types of routes that the viewer sees in the browser.
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'))
 });

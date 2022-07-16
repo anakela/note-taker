@@ -1,7 +1,17 @@
 [
     {
-        "id":1,
-        "title":"Test Title",
-        "text":"Test text"
+        "id": 1,
+        "title": "Test Title",
+        "text": "Test text"
+    },
+    {
+        "id": "09244579-9413-4b79-933c-fbd844b8dee4",
+        "title": "Testing",
+        "text": "Testing this note."
+    },
+    {
+        "id": "df3a1600-0541-4308-9e47-a8ce90bff738",
+        "title": "Laundry",
+        "text": "Fold it."
     }
 ]
