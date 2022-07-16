@@ -17,6 +17,7 @@ router.get('/notes', (req, res) => {
 router.post('/notes', (req, res) => {
     console.log(req.body);
     const noteObj = {
+        // Here, each ID is generated automatically by uuid.
         id: uuidv4(),
         title: req.body.title,
         text: req.body.text
@@ -27,7 +28,7 @@ router.post('/notes', (req, res) => {
             // console.log(data);
             // res.json(data);
             data.push(noteObj);
-            
+
             writeFile('./db/db.json', JSON.stringify(data))
                 .then((result) => {
                     console.log(result);
@@ -38,10 +39,12 @@ router.post('/notes', (req, res) => {
 });
 
 router.delete('/notes/:id', (req, res) => {
+    // Here, use each node's ID to determine which should be deleted.
     console.log(req.params.id);
     readFile('./db/db.json', 'utf-8')
         .then((response) => {
             let data = JSON.parse(response);
+            // Filter out all note IDs that don't match the ID that the user selected.
             const filteredNotes = data.filter(note => note.id !== req.params.id);
             console.log(filteredNotes);
 

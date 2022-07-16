@@ -72,9 +72,69 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ### What I Learned
 
-This challenge was my first opportunity to combine `Node.js` and frontend development together.  It was also provided a chance to explore how to use Express.js and routes.
+I learned several things while working on this assignment.
+- First, this challenge was my first opportunity to combine `Node.js` and frontend development together.  Before working on the note taker, I was in the dark about associating frontend GUI with backend code using `Node.js`.
+- Second, it was also provided a chance to explore how to use Express.js and routes.  I discovered that using routes allowed me to prepend directory path elements to extended directory paths.  For example, in my `routes > index.js` file, I appended `'/api'` to all `apiRoutes > index.js` files.
 
-I learned several things while working on this assignment.  
+```JavaScript
+const router = require('express').Router();
+const apiRoutes = require('./apiRoutes');
+
+// Prepend '/api' to every route declared in apiRoutes.
+router.use('/api', apiRoutes);
+
+module.exports = router;
+```
+
+- Thirdly, I learned how to use NPM's `uuid` to generate IDs for each object in my `db.json` database.  This came in especially handy for when I, and subsequently users, needed to delete a note.
+
+```JavaScript
+router.post('/notes', (req, res) => {
+    console.log(req.body);
+    const noteObj = {
+        // Here, each ID is generated automatically by uuid.
+        id: uuidv4(),
+        title: req.body.title,
+        text: req.body.text
+    };
+    readFile('./db/db.json', 'utf-8')
+        .then((response) => {
+            let data = JSON.parse(response);
+            // console.log(data);
+            // res.json(data);
+            data.push(noteObj);
+            
+            writeFile('./db/db.json', JSON.stringify(data))
+                .then((result) => {
+                    console.log(result);
+                    res.json(data);
+                });
+        });
+
+});
+```
+
+```JavaScript
+const { v4: uuidv4 } = require('uuid');
+
+router.delete('/notes/:id', (req, res) => {
+    // Here, use each node's ID to determine which should be deleted.
+    console.log(req.params.id);
+    readFile('./db/db.json', 'utf-8')
+        .then((response) => {
+            let data = JSON.parse(response);
+            // Filter out all note IDs that don't match the ID that the user selected.
+            const filteredNotes = data.filter(note => note.id !== req.params.id);
+            console.log(filteredNotes);
+
+            writeFile('./db/db.json', JSON.stringify(filteredNotes))
+                .then((result) => {
+                    console.log(result);
+                    res.json(filteredNotes);
+                });
+        });
+});
+```
 
 ### Continued Development
 
@@ -98,7 +158,7 @@ router.patch('/notes/:id', (req, res) => {
 });
 ```
 
-I would then need to add icons to each note that users could click in order to edit them individually, as well as a save icon when each note is displayed and updated.
+I would then need to update the `public > js > index.js` file to add icons to each note, which users could click in order to edit them individually.  I would then add a save icon so that each note could be displayed and then saved/updated.
 
 ### Useful Resources
 
