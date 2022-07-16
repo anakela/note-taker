@@ -72,9 +72,9 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ### What I Learned
 
-I learned several things while working on this assignment.
-- First, this challenge was my first opportunity to combine `Node.js` and frontend development together.  Before working on the note taker, I was in the dark about associating frontend GUI with backend code using `Node.js`.
-- Second, it was also provided a chance to explore how to use Express.js and routes.  I discovered that using routes allowed me to prepend directory path elements to extended directory paths.  For example, in my `routes > index.js` file, I appended `'/api'` to all `apiRoutes > index.js` files.
+I learned several things while working on this assignment.  First, this challenge was my first opportunity to combine `Node.js` and frontend development together.  Before working on the note taker, I was in the dark about associating frontend GUI with backend code using `Node.js`.
+
+Second, it was also provided a chance to explore how to use Express.js and routes.  I discovered that using routes allowed me to prepend directory path elements to extended directory paths.  For example, in my `routes > index.js` file, I appended `'/api'` to all `apiRoutes > index.js` files.
 
 ```JavaScript
 const router = require('express').Router();
@@ -86,7 +86,7 @@ router.use('/api', apiRoutes);
 module.exports = router;
 ```
 
-- Thirdly, I learned how to use NPM's `uuid` to generate IDs for each object in my `db.json` database.  This came in especially handy for when I, and subsequently users, needed to delete a note.
+Thirdly, I learned how to use NPM's `uuid` to generate IDs for each object in my `db.json` database.  This came in especially handy for when I, and subsequently users, needed to delete a note.
 
 ```JavaScript
 router.post('/notes', (req, res) => {
@@ -135,6 +135,10 @@ router.delete('/notes/:id', (req, res) => {
         });
 });
 ```
+
+I also learned how to deploy an app to Heroku!  This was difficult for me at first, but after installing Heroku's CLI, I found that it was relatively simple.
+
+Lastly, I learned that when you're working with a deployed app using `node` or `nodemon`, you cannot right-click and open an HTML page and run it in your browser.  (It turns out, this will use your computer's filepath rather than `localhost`, which will cause it to break when trying to navigate to other `HTML` pages.)
 
 ### Continued Development
 
