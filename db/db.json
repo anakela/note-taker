@@ -1,17 +1,1 @@
-[
-    {
-        "id": "09244579-9413-4b79-933c-fbd844b8dee4",
-        "title": "Testing",
-        "text": "Testing this note."
-    },
-    {
-        "id": "df3a1600-0541-4308-9e47-a8ce90bff738",
-        "title": "Laundry",
-        "text": "Fold it."
-    },
-    {
-        "id": "bc8aba94-428a-440a-a26f-4721e2acd65d",
-        "title": "Eat Dinner",
-        "text": "Nom nom..."
-    }
-]
+[{"id":"bc8aba94-428a-440a-a26f-4721e2acd65d","title":"Eat Dinner","text":"Nom nom..."},{"id":"e5688c9f-2683-44ef-a532-70375303a559","title":"Laundry","text":"Fold the laundry"},{"id":"30077a79-2f38-4ded-bde6-27b3619f6297","title":"Learn OOP","text":"Study to learn more about OOP."}]
